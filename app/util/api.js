@@ -4,3 +4,10 @@ export function fetchPopRepo(language) {
         .then((res)=>res.json()
         .then((data)=> data.items))     
 }
+
+export function fetchUser(username){
+    const url = `https://api.github.com/users/${username}`
+    return fetch(url)
+    .then((res)=>res.json()
+    .then((data)=> data))
+}
