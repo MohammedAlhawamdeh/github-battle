@@ -21,7 +21,7 @@ const NavBar = ({toggleTheme}) => {
                 className='nav-link active'
                 exact='true'
                 >
-                    Popualr
+                    Popular
                 </NavLink>
             </li>
             <li>

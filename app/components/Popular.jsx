@@ -7,7 +7,7 @@ const Popular = () => {
     const [data , setData] = React.useState(null)
     const [language , setLanguage ] = React.useState('All')
     const languages = ['All' ,'JavaScript','Python','Ruby','CSS','Java' ]
-     
+    
     const onChange = (e) =>{
         setLanguage(e.target.value)
     }

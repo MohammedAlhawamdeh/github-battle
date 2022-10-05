@@ -11,3 +11,12 @@ export function fetchUser(username){
     .then((res)=>res.json()
     .then((data)=> data))
 }
+
+export function getRepos(username){
+    const url = `https://api.github.com/users/${username}/repos`
+    if(username){
+        return fetch(url)
+        .then((res)=>res.json()
+        .then((data)=>data))
+    }
+}

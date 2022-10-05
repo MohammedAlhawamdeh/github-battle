@@ -487,3 +487,7 @@
   .card li > *:not(:first-child) {
     opacity: 0.75;
   }
+
+  .tie{
+    text-align: center;
+  }

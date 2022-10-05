@@ -1,15 +1,18 @@
-import React from 'react';
+import React , {useState} from 'react';
 import ReactDOM from "react-dom/client";
 import './index.css';
 import NavBar from './components/NavBar'
 import {ThemeProvider} from './context/theme';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Battle from './components/Battle'
-import Popular from './components/Popular'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Battle from './components/Battle';
+import Popular from './components/Popular';
+import Results from './components/Results';
 
 const App = () => {
   const [theme , setTheme] = React.useState('light')
   const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')
+  const [firstPlayer , setFirstPlayer] = useState(null)
+  const [secondPlayer , setSecondPlayer] = useState(null)
 
   return (
     <Router>
@@ -19,7 +22,8 @@ const App = () => {
               <NavBar toggleTheme={toggleTheme} />
               <Routes>
                 <Route exact path='/' element={<Popular/>}/>
-                <Route exact path='/battle' element={<Battle/>}/>
+                <Route path='/battle' element={<Battle firstPlayer={firstPlayer} setFirstPlayer={setFirstPlayer} secondPlayer={secondPlayer} setSecondPlayer={setSecondPlayer}/>}/>
+                <Route path='/results' element={<Results firstPlayer={firstPlayer} secondPlayer={secondPlayer} setFirstPlayer={setFirstPlayer} setSecondPlayer={setSecondPlayer}/>}/>
               </Routes>
           </div>
         </div>
