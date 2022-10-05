@@ -14,7 +14,8 @@ const Battle = ({
 
   const handleSubmit = (e, name) => {
     e.preventDefault();
-    fetchUser(name).then((user) => {
+    fetchUser(name)
+    .then((user) => {
       if (name === username) {
         setFirstPlayer(user);
       } else if (name === username2) {
@@ -50,7 +51,14 @@ const Battle = ({
     <main className="stack main-stack animate-in">
       <div className="split">
         <h1>Players</h1>
-        <Link to='/results' className={`btn primary ${ (firstPlayer && secondPlayer) ? "" : "disabled"}`}>Battle</Link>
+        <Link
+          to="/results"
+          className={`btn primary ${
+            firstPlayer && secondPlayer ? "" : "disabled"
+          }`}
+        >
+          Battle
+        </Link>
       </div>
       <section className="grid">
         {!firstPlayer ? (
