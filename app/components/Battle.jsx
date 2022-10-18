@@ -11,7 +11,6 @@ const Battle = ({
 }) => {
   const [username, setUsername] = useState("");
   const [username2, setUsername2] = useState("");
-
   const handleSubmit = (e, name) => {
     e.preventDefault();
     fetchUser(name)

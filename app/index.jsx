@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import ReactDOM from "react-dom/client";
 import './index.css';
 import NavBar from './components/NavBar'
@@ -9,10 +9,14 @@ import Popular from './components/Popular';
 import Results from './components/Results';
 
 const App = () => {
-  const [theme , setTheme] = React.useState('light')
+  const [theme , setTheme] = React.useState('light'&& window.localStorage.getItem('theme'));
   const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')
   const [firstPlayer , setFirstPlayer] = useState(null)
   const [secondPlayer , setSecondPlayer] = useState(null)
+
+  useEffect(() =>{
+    window.localStorage.setItem('theme', theme);
+  },[theme])
 
   return (
     <Router>

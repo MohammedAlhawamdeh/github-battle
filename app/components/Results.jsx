@@ -2,16 +2,20 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import {getRepos} from '../util/api'
 
+
 const Results = ({firstPlayer,secondPlayer ,setFirstPlayer , setSecondPlayer}) => {
   const [firstPlayerRepo , setFirstPlayerRepo ] = React.useState(null)
   const [secondPlayerRepo , setSecondPlayerRepo ] = React.useState(null)
+  const [isCalculating , setIsCalculating ] = React.useState(true)
 
   React.useEffect(()=>{
-      getRepos(firstPlayer?.login)
+    if(firstPlayer){
+      getRepos(firstPlayer.login)
       .then(data => setFirstPlayerRepo(data))
-      getRepos(secondPlayer?.login)
+      getRepos(secondPlayer.login)
       .then(data => setSecondPlayerRepo(data))
-  },[])
+    }
+  },[firstPlayer , secondPlayer])
   function firstPlayerCountStars(){
     return firstPlayerRepo?.reduce((count , state)=>{
       return count + state.stargazers_count
@@ -37,6 +41,7 @@ const Results = ({firstPlayer,secondPlayer ,setFirstPlayer , setSecondPlayer}) =
     setFirstPlayer(null)
     setSecondPlayer(null)
   }
+  
   
   
 
@@ -122,11 +127,13 @@ const Results = ({firstPlayer,secondPlayer ,setFirstPlayer , setSecondPlayer}) =
               </li>
             </ul>
           </div>
-          <p className="results">
+          {
+            !isCalculating && (<p className="results">
             <span>
               {caluculateFinalResultSecondPlayer()}
             </span>
-          </p>
+          </p>)
+          }
           {(caluculateFinalResultFirstPlayer() < caluculateFinalResultSecondPlayer())?<h4 className="results">Winner is {secondPlayer.login}</h4>:''}
           </article>
       </section>
