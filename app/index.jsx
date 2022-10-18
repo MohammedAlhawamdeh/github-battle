@@ -9,7 +9,7 @@ import Popular from './components/Popular';
 import Results from './components/Results';
 
 const App = () => {
-  const [theme , setTheme] = React.useState('light'&& window.localStorage.getItem('theme'));
+  const [theme , setTheme] = React.useState('light' && window.localStorage.getItem('theme'));
   const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')
   const [firstPlayer , setFirstPlayer] = useState(null)
   const [secondPlayer , setSecondPlayer] = useState(null)
